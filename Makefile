@@ -1,21 +1,11 @@
-#ifndef QUEUE_H
-# define QUEUE_H
+main_program: main.o queue.o 
+	gcc main.o queue.o -o main_program
 
-typedef struct queue_node {
-  int value;
-  struct queue_node *next;
-} queue_node_t;
+main.o: main.c queue.h
+	gcc -Werror -Wall -ggdb main.c -c
 
-typedef struct queue {
-  int size;
-  queue_node_t *head, *tail;
-} queue_t;
+queue.o: queue.c queue.h
+	gcc -Wall -Werror -ggdb queue.c -c
 
-int queue_init(queue_t *q);
-int queue_delete(queue_t *q);
-int queue_add(queue_t *q, int v);
-int queue_remove(queue_t *q, int *v);
-int queue_peek(queue_t *q, int *v);
-int queue_size(queue_t *q);
-
-#endif
+clean:
+	rm *.o main_program

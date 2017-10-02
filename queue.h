@@ -3,6 +3,7 @@
 
 typedef struct queue_node {
   int value;
+  int priority;
   struct queue_node *next;
 } queue_node_t;
 
@@ -13,7 +14,7 @@ typedef struct queue {
 
 int queue_init(queue_t *q);
 int queue_delete(queue_t *q);
-int queue_add(queue_t *q, int v);
+int queue_add(queue_t *q, int v, int priority);
 int queue_remove(queue_t *q, int *v);
 int queue_peek(queue_t *q, int *v);
 int queue_size(queue_t *q);
