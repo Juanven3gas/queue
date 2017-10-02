@@ -21,6 +21,8 @@ int queue_delete(queue_t *q)
   while (!queue_remove(q, &i))
     ;
 
+  free(q->head);
+  free(q->tail);
   return 0;
 }
 
